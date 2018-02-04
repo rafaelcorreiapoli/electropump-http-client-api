@@ -2,77 +2,41 @@
   {
     "swagger": "2.0",
     "info": {
-      "description": "Walmart Item Module",
-      "title": "WalmartItem",
+      "description": "HTTP Client",
+      "title": "HttpClient",
       "contact": {
-        "name": "ERN Mobile Platform Team"
+        "name": "Rafael Ribeiro & Rudi Eros"
       }
     },
     "paths": {
-      "/items": {
+      "/": {
         "get": {
           "tags": [
-          "WalmartItem"
+          "HttpCLient"
           ],
-          "description": "Returns all items from the system that the user has access to",
-          "operationId": "findItems",
+          "description": "Single api through which every request is made",
+          "operationId": "request",
           "parameters": [{
-            "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
-          }],
+            "name": "url",
+            "required": true,
+            "type": "string"
+          },{
+            "in": "query",
+            "name": "method",
+            "required": true,
+            "description": "Method for the request (currently supported: get and post)",
+            "type": "string"
+          }
+          ],
           "responses": {
             "200": {
               "description": "Item response",
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/Item"
-                }
+                "type": "string"
               }
             }
           }
-        },
-        "post": {
-          "tags": [
-          "WalmartItem"
-          ],
-          "description": "Creates a Item in the store.",
-          "operationId": "addItem",
-          "parameters": [{
-            "name": "item",
-            "in": "body",
-            "description": "Item to add",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Item"
-            }
-          }],
-          "responses": {
-            "200": {
-              "schema": {
-                "type": "boolean"
-              }
-            }
-          }
-        }
-      },
-      "event/itemAdded": {
-        "event": {
-          "tags": [
-          "WalmartItem"
-          ],
-          "operationId": "itemAdded",
-          "parameters": [{
-            "name": "itemId",
-            "in": "path",
-            "description": "Event to notify new item added",
-            "required": true,
-            "type": "string"
-          }]
         }
       }
     },

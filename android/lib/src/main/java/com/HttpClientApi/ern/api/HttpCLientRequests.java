@@ -22,31 +22,21 @@ import com.walmartlabs.electrode.reactnative.bridge.None;
 import com.walmartlabs.electrode.reactnative.bridge.RequestHandlerProcessor;
 import com.walmartlabs.electrode.reactnative.bridge.RequestProcessor;
 import java.util.*;
-import com.HttpClientApi.ern.model.Item;
 
 
-final class WalmartItemRequests implements WalmartItemApi.Requests {
-    WalmartItemRequests() {}
+final class HttpCLientRequests implements HttpCLientApi.Requests {
+    HttpCLientRequests() {}
 
 
     @Override
-    public void registerAddItemRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<Item, Boolean> handler) {
-        new RequestHandlerProcessor<>(REQUEST_ADD_ITEM, Item.class, Boolean.class, handler).execute();
-    }
-
-    @Override
-    public void registerFindItemsRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<Integer, List<Item>> handler) {
-        new RequestHandlerProcessor<>(REQUEST_FIND_ITEMS, Integer.class, (Class) Item.class, handler).execute();
+    public void registerRequestRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<RequestData, String> handler) {
+        new RequestHandlerProcessor<>(REQUEST_REQUEST, RequestData.class, String.class, handler).execute();
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------
 
     @Override
-    public void addItem(Item item,@NonNull final ElectrodeBridgeResponseListener<Boolean> responseListener) {
-        new RequestProcessor<>(REQUEST_ADD_ITEM,  item, Boolean.class, responseListener).execute();
-    }
-    @Override
-    public void findItems(Integer limit,@NonNull final ElectrodeBridgeResponseListener<List<Item>> responseListener) {
-        new RequestProcessor<>(REQUEST_FIND_ITEMS,  limit, (Class) List.class, Item.class, responseListener).execute();
+    public void request(RequestData requestData,@NonNull final ElectrodeBridgeResponseListener<String> responseListener) {
+        new RequestProcessor<>(REQUEST_REQUEST,  requestData, String.class, responseListener).execute();
     }
 }
