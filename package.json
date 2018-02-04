@@ -1,0 +1,28 @@
+{
+  "name": "http-client-api",
+  "version": "1.0.0",
+  "description": "ERN Generated API for HttpClientApi",
+  "main": "javascript/src/index.js",
+  "author": "rafaelribeirocorreia",
+  "scripts": {
+    "flow": "flow"
+  },
+  "devDependencies": {
+    "flow-bin": "^0.47.0"
+  },
+  "dependencies": {
+    "react-native-electrode-bridge": "1.5.x"
+  },
+  "ern": {
+    "message": {
+      "moduleName": "HttpClientApi",
+      "namespace": "com.HttpClientApi.ern",
+      "apiSchemaPath": "schema.json",
+      "artifactId": "react-native-HttpClientApi-api"
+    },
+    "moduleType": "ern-api"
+  },
+  "keywords": [
+    "ern-api"
+  ]
+}
