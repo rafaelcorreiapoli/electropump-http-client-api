@@ -8,6 +8,22 @@
       "name": "Rafael Ribeiro & Rudi Eros"
     }
   },
+  "definitions": {
+    "Response": {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "string"
+        },
+        "headers": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer"
+        }
+      }
+    }
+  },
   "paths": {
     "/": {
       "get": {
@@ -49,7 +65,7 @@
           "200": {
             "description": "Request response",
             "schema": {
-              "type": "string"
+              "$ref": "#/definitions/Response"
             }
           }
         }
