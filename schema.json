@@ -1,66 +1,59 @@
-
-  {
-    "swagger": "2.0",
-    "info": {
-      "description": "HTTP Client",
-      "title": "HttpClient",
-      "version": "1.0",
-      "contact": {
-        "name": "Rafael Ribeiro & Rudi Eros"
-      }
-    },
-    "paths": {
-      "/": {
-        "get": {
-          "tags": [
-          "HttpCLient"
-          ],
-          "description": "Single api through which every request is made",
-          "operationId": "request",
-          "parameters": [{
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "HTTP Client",
+    "version": "1.1",
+    "title": "HttpClient",
+    "contact": {
+      "name": "Rafael Ribeiro & Rudi Eros"
+    }
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "HttpClient"
+        ],
+        "description": "Single api through which every request is made",
+        "operationId": "request",
+        "parameters": [
+          {
             "in": "query",
             "name": "url",
             "required": true,
             "type": "string"
-          },{
+          },
+          {
             "in": "query",
             "name": "method",
             "required": true,
             "description": "Method for the request (currently supported: get and post)",
             "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "data",
+            "required": false,
+            "description": "Request payload",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "headers",
+            "required": false,
+            "description": "Request headers",
+            "type": "string"
           }
-          ],
-          "responses": {
-            "200": {
-              "description": "Item response",
-              "schema": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "definitions": {
-      "Item": {
-        "type": "object",
-        "required": [
-        "name",
-        "id"
         ],
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "name": {
-            "type": "string"
-          },
-          "desc": {
-            "type": "string"
+        "responses": {
+          "200": {
+            "description": "Request response",
+            "schema": {
+              "type": "string"
+            }
           }
         }
       }
     }
   }
-  
+}
