@@ -1,9 +1,9 @@
 
 public class HttpClientRequests: HttpClientAPIRequests {
 
-    public override func registerRequestRequestHandler(handler:  @escaping ElectrodeBridgeRequestCompletionHandler) {
-        let requestHandlerProcessor = ElectrodeRequestHandlerProcessor(requestName: HttpClientAPI.kRequestRequest,
-    reqClass: RequestData.self, 
+    public override func registerFetchRequestHandler(handler:  @escaping ElectrodeBridgeRequestCompletionHandler) {
+        let requestHandlerProcessor = ElectrodeRequestHandlerProcessor(requestName: HttpClientAPI.kRequestFetch,
+    reqClass: FetchData.self, 
     respClass: Response.self,
     requestCompletionHandler: handler)
         requestHandlerProcessor.execute()
@@ -12,10 +12,10 @@ public class HttpClientRequests: HttpClientAPIRequests {
     //------------------------------------------------------------------------------------------------------------------------------------
 
 
-    public override func request(requestData: RequestData, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
-        let requestProcessor = ElectrodeRequestProcessor<RequestData, Response, Any>(
-            requestName: HttpClientAPI.kRequestRequest,
-            requestPayload: requestData,
+    public override func fetch(fetchData: FetchData, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
+        let requestProcessor = ElectrodeRequestProcessor<FetchData, Response, Any>(
+            requestName: HttpClientAPI.kRequestFetch,
+            requestPayload: fetchData,
             respClass: Response.self,
             responseItemType: nil,
             responseCompletionHandler: responseCompletionHandler)

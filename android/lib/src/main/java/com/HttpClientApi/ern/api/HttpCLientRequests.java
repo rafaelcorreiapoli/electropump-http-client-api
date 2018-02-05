@@ -30,14 +30,14 @@ final class HttpClientRequests implements HttpClientApi.Requests {
 
 
     @Override
-    public void registerRequestRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<RequestData, Response> handler) {
-        new RequestHandlerProcessor<>(REQUEST_REQUEST, RequestData.class, Response.class, handler).execute();
+    public void registerFetchRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<FetchData, Response> handler) {
+        new RequestHandlerProcessor<>(REQUEST_FETCH, FetchData.class, Response.class, handler).execute();
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------
 
     @Override
-    public void request(RequestData requestData,@NonNull final ElectrodeBridgeResponseListener<Response> responseListener) {
-        new RequestProcessor<>(REQUEST_REQUEST,  requestData, Response.class, responseListener).execute();
+    public void fetch(FetchData fetchData,@NonNull final ElectrodeBridgeResponseListener<Response> responseListener) {
+        new RequestProcessor<>(REQUEST_FETCH,  fetchData, Response.class, responseListener).execute();
     }
 }

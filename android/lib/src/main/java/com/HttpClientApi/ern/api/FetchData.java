@@ -23,27 +23,27 @@ import com.walmartlabs.electrode.reactnative.bridge.Bridgeable;
 
 import static com.walmartlabs.electrode.reactnative.bridge.util.BridgeArguments.*;
 
-public class RequestData implements Parcelable, Bridgeable {
+public class FetchData implements Parcelable, Bridgeable {
 
     private String url;
     private String method;
     private String data;
     private String headers;
 
-    private RequestData() {}
+    private FetchData() {}
 
-    private RequestData(Builder builder) {
+    private FetchData(Builder builder) {
         this.url = builder.url;
         this.method = builder.method;
         this.data = builder.data;
         this.headers = builder.headers;
     }
 
-    private RequestData(Parcel in) {
+    private FetchData(Parcel in) {
         this(in.readBundle());
     }
 
-    public RequestData(@NonNull Bundle bundle) {
+    public FetchData(@NonNull Bundle bundle) {
         if(bundle.get("url") == null){
             throw new IllegalArgumentException("url property is required");
         }
@@ -56,15 +56,15 @@ public class RequestData implements Parcelable, Bridgeable {
         this.headers = bundle.getString("headers");
     }
 
-    public static final Creator<RequestData> CREATOR = new Creator<RequestData>() {
+    public static final Creator<FetchData> CREATOR = new Creator<FetchData>() {
         @Override
-        public RequestData createFromParcel(Parcel in) {
-            return new RequestData(in);
+        public FetchData createFromParcel(Parcel in) {
+            return new FetchData(in);
         }
 
         @Override
-        public RequestData[] newArray(int size) {
-            return new RequestData[size];
+        public FetchData[] newArray(int size) {
+            return new FetchData[size];
         }
     };
 
@@ -74,7 +74,7 @@ public class RequestData implements Parcelable, Bridgeable {
     }
 
     /**
-    * Method for the request (currently supported: get and post)
+    * Method for the fetch (currently supported: get and post)
     *
     * @return String
     */
@@ -152,8 +152,8 @@ public class RequestData implements Parcelable, Bridgeable {
         }
 
         @NonNull
-        public RequestData build() {
-            return new RequestData(this);
+        public FetchData build() {
+            return new FetchData(this);
         }
     }
 }

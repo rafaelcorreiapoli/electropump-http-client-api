@@ -1,6 +1,6 @@
 public class HttpClientAPI: NSObject  {
 
-    static let kRequestRequest = "com.HttpClientApi.ern.api.request.request";
+    static let kRequestFetch = "com.HttpClientApi.ern.api.request.fetch";
 
 
     public lazy var requests: HttpClientAPIRequests = {
@@ -10,11 +10,11 @@ public class HttpClientAPI: NSObject  {
 
 
 public class HttpClientAPIRequests: NSObject {
-    public func registerRequestRequestHandler(handler: @escaping ElectrodeBridgeRequestCompletionHandler) {
+    public func registerFetchRequestHandler(handler: @escaping ElectrodeBridgeRequestCompletionHandler) {
         assertionFailure("should override")
     }
 
-    public func request(requestData: RequestData, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
+    public func fetch(fetchData: FetchData, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
         assertionFailure("should override")
     }
 

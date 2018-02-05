@@ -1,5 +1,5 @@
 
-public class RequestData: ElectrodeObject, Bridgeable {
+public class FetchData: ElectrodeObject, Bridgeable {
 
     private static let tag = String(describing: type(of: self))
 
@@ -33,7 +33,7 @@ public class RequestData: ElectrodeObject, Bridgeable {
             self.url = url
             self.method = method
         } else {
-            assertionFailure("\(RequestData.tag) missing one or more required properties[url,method]")
+            assertionFailure("\(FetchData.tag) missing one or more required properties[url,method]")
             self.url = dictionary["url"] as! String
             self.method = dictionary["method"] as! String
         }

@@ -43,12 +43,12 @@ public final class HttpClientApi {
 
 
     public interface Requests {
-        String REQUEST_REQUEST = "com.HttpClientApi.ern.api.request.request";
+        String REQUEST_FETCH = "com.HttpClientApi.ern.api.request.fetch";
 
 
-        void registerRequestRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<RequestData, Response> handler);
+        void registerFetchRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<FetchData, Response> handler);
 
-        void request(RequestData requestData, @NonNull final ElectrodeBridgeResponseListener<Response> responseListener);
+        void fetch(FetchData fetchData, @NonNull final ElectrodeBridgeResponseListener<Response> responseListener);
 
     }
 }
