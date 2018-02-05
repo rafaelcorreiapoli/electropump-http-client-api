@@ -1,6 +1,6 @@
 {
   "name": "http-client-api",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "ERN Generated API for HttpClientApi",
   "main": "javascript/src/index.js",
   "author": "rafaelribeirocorreia",
