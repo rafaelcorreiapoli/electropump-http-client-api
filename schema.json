@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "HTTP Client",
-    "version": "1.2.0",
+    "version": "1.4.0",
     "title": "HttpClient",
     "contact": {
       "name": "Rafael Ribeiro & Rudi Eros"
@@ -30,8 +30,8 @@
         "tags": [
           "HttpClient"
         ],
-        "description": "Single api through which every request is made",
-        "operationId": "request",
+        "description": "Single api through which every fetch is made",
+        "operationId": "fetch",
         "parameters": [
           {
             "in": "query",
@@ -43,7 +43,7 @@
             "in": "query",
             "name": "method",
             "required": true,
-            "description": "Method for the request (currently supported: get and post)",
+            "description": "Method for the fetch (currently supported: get and post)",
             "type": "string"
           },
           {
@@ -63,7 +63,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Request response",
+            "description": "Fetch response",
             "schema": {
               "$ref": "#/definitions/Response"
             }
