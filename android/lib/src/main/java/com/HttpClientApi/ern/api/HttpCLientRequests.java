@@ -22,21 +22,22 @@ import com.walmartlabs.electrode.reactnative.bridge.None;
 import com.walmartlabs.electrode.reactnative.bridge.RequestHandlerProcessor;
 import com.walmartlabs.electrode.reactnative.bridge.RequestProcessor;
 import java.util.*;
+import com.HttpClientApi.ern.model.Response;
 
 
-final class HttpCLientRequests implements HttpCLientApi.Requests {
-    HttpCLientRequests() {}
+final class HttpClientRequests implements HttpClientApi.Requests {
+    HttpClientRequests() {}
 
 
     @Override
-    public void registerRequestRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<RequestData, String> handler) {
-        new RequestHandlerProcessor<>(REQUEST_REQUEST, RequestData.class, String.class, handler).execute();
+    public void registerRequestRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<RequestData, Response> handler) {
+        new RequestHandlerProcessor<>(REQUEST_REQUEST, RequestData.class, Response.class, handler).execute();
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------
 
     @Override
-    public void request(RequestData requestData,@NonNull final ElectrodeBridgeResponseListener<String> responseListener) {
-        new RequestProcessor<>(REQUEST_REQUEST,  requestData, String.class, responseListener).execute();
+    public void request(RequestData requestData,@NonNull final ElectrodeBridgeResponseListener<Response> responseListener) {
+        new RequestProcessor<>(REQUEST_REQUEST,  requestData, Response.class, responseListener).execute();
     }
 }

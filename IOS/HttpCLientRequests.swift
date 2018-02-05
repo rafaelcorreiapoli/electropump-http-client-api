@@ -1,10 +1,10 @@
 
-public class HttpCLientRequests: HttpCLientAPIRequests {
+public class HttpClientRequests: HttpClientAPIRequests {
 
     public override func registerRequestRequestHandler(handler:  @escaping ElectrodeBridgeRequestCompletionHandler) {
-        let requestHandlerProcessor = ElectrodeRequestHandlerProcessor(requestName: HttpCLientAPI.kRequestRequest,
+        let requestHandlerProcessor = ElectrodeRequestHandlerProcessor(requestName: HttpClientAPI.kRequestRequest,
     reqClass: RequestData.self, 
-    respClass: String.self,
+    respClass: Response.self,
     requestCompletionHandler: handler)
         requestHandlerProcessor.execute()
     }
@@ -13,10 +13,10 @@ public class HttpCLientRequests: HttpCLientAPIRequests {
 
 
     public override func request(requestData: RequestData, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
-        let requestProcessor = ElectrodeRequestProcessor<RequestData, String, Any>(
-            requestName: HttpCLientAPI.kRequestRequest,
+        let requestProcessor = ElectrodeRequestProcessor<RequestData, Response, Any>(
+            requestName: HttpClientAPI.kRequestRequest,
             requestPayload: requestData,
-            respClass: String.self,
+            respClass: Response.self,
             responseItemType: nil,
             responseCompletionHandler: responseCompletionHandler)
 

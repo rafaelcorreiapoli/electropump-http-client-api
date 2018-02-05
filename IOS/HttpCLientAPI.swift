@@ -1,15 +1,15 @@
-public class HttpCLientAPI: NSObject  {
+public class HttpClientAPI: NSObject  {
 
     static let kRequestRequest = "com.HttpClientApi.ern.api.request.request";
 
 
-    public lazy var requests: HttpCLientAPIRequests = {
-        return HttpCLientRequests()
+    public lazy var requests: HttpClientAPIRequests = {
+        return HttpClientRequests()
     }()
 }
 
 
-public class HttpCLientAPIRequests: NSObject {
+public class HttpClientAPIRequests: NSObject {
     public func registerRequestRequestHandler(handler: @escaping ElectrodeBridgeRequestCompletionHandler) {
         assertionFailure("should override")
     }

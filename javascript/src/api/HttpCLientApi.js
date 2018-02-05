@@ -1,7 +1,7 @@
 import { electrodeBridge } from 'react-native-electrode-bridge';
-import HttpCLientRequests from './HttpCLientRequests';
+import HttpClientRequests from './HttpClientRequests';
 
-const REQUESTS = new HttpCLientRequests(electrodeBridge);
+const REQUESTS = new HttpClientRequests(electrodeBridge);
 
 export function requests() {
     return REQUESTS;

@@ -1,7 +1,7 @@
 // @flow
 
 
-export default class HttpCLientRequests {
+export default class HttpClientRequests {
     constructor(bridge) {
      this._bridge = bridge;
     }
@@ -21,22 +21,28 @@ export default class HttpCLientRequests {
       * Single api through which every request is made
       * @param  url 
       * @param  method Method for the request (currently supported: get and post)
+      * @param {Object} opts Optional parameters
+      * @param  opts.data Request payload
+      * @param  opts.headers Request headers
       * @param integer timeout in milliseconds
-      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link String }
+      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:com.HttpClientApi.ern.model/Response }
       */
 
-     request(url: string, method: string,timeout: number): Promise<any> {
+     request(url: string, method: string, opts: any,timeout: number): Promise<any> {
+        opts = opts || {};
      const data =  {}
         // verify the required parameter 'url' is set
         if (url  == null) {
-        throw "Missing the required parameter 'url' when calling 'HttpCLientApi#request'";
+        throw "Missing the required parameter 'url' when calling 'HttpClientApi#request'";
         }
         // verify the required parameter 'method' is set
         if (method  == null) {
-        throw "Missing the required parameter 'method' when calling 'HttpCLientApi#request'";
+        throw "Missing the required parameter 'method' when calling 'HttpClientApi#request'";
         }
           data['url'] = url;
           data['method'] = method;
+          data['data'] = opts['data'];
+          data['headers'] = opts['headers'];
         return this._bridge.sendRequest("com.HttpClientApi.ern.api.request.request", { data, timeout })
     }
 }

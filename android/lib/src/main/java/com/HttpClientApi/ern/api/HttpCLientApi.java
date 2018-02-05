@@ -23,15 +23,16 @@ import com.walmartlabs.electrode.reactnative.bridge.None;
 import java.util.*;
 import java.util.UUID;
 
+import com.HttpClientApi.ern.model.Response;
 
-public final class HttpCLientApi {
+public final class HttpClientApi {
     private static final Requests REQUESTS;
 
     static {
-        REQUESTS = new HttpCLientRequests();
+        REQUESTS = new HttpClientRequests();
     }
 
-    private HttpCLientApi() {
+    private HttpClientApi() {
     }
 
     @NonNull
@@ -45,9 +46,9 @@ public final class HttpCLientApi {
         String REQUEST_REQUEST = "com.HttpClientApi.ern.api.request.request";
 
 
-        void registerRequestRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<RequestData, String> handler);
+        void registerRequestRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<RequestData, Response> handler);
 
-        void request(RequestData requestData, @NonNull final ElectrodeBridgeResponseListener<String> responseListener);
+        void request(RequestData requestData, @NonNull final ElectrodeBridgeResponseListener<Response> responseListener);
 
     }
 }

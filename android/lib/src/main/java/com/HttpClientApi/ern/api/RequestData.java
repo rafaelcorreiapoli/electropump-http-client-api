@@ -27,12 +27,16 @@ public class RequestData implements Parcelable, Bridgeable {
 
     private String url;
     private String method;
+    private String data;
+    private String headers;
 
     private RequestData() {}
 
     private RequestData(Builder builder) {
         this.url = builder.url;
         this.method = builder.method;
+        this.data = builder.data;
+        this.headers = builder.headers;
     }
 
     private RequestData(Parcel in) {
@@ -48,6 +52,8 @@ public class RequestData implements Parcelable, Bridgeable {
         }
         this.url = bundle.getString("url");
         this.method = bundle.getString("method");
+        this.data = bundle.getString("data");
+        this.headers = bundle.getString("headers");
     }
 
     public static final Creator<RequestData> CREATOR = new Creator<RequestData>() {
@@ -77,6 +83,26 @@ public class RequestData implements Parcelable, Bridgeable {
         return method;
     }
 
+    /**
+    * Request payload
+    *
+    * @return String
+    */
+    @Nullable
+    public String getdata() {
+        return data;
+    }
+
+    /**
+    * Request headers
+    *
+    * @return String
+    */
+    @Nullable
+    public String getheaders() {
+        return headers;
+    }
+
 
     @Override
     public int describeContents() {
@@ -94,18 +120,36 @@ public class RequestData implements Parcelable, Bridgeable {
         Bundle bundle = new Bundle();
         this.url = bundle.getString("url");
         this.method = bundle.getString("method");
+        if(data != null) {
+            this.data = bundle.getString("data");
+        }
+        if(headers != null) {
+            this.headers = bundle.getString("headers");
+        }
         return bundle;
     }
 
     public static class Builder {
         private final String url;
         private final String method;
+        private String data;
+        private String headers;
 
         public Builder(@NonNull String url, @NonNull String method) {
             this.url = url;
             this.method = method;
         }
 
+        @NonNull
+        public Builder data(@Nullable String data) {
+            this.data = data;
+            return this;
+        }
+        @NonNull
+        public Builder headers(@Nullable String headers) {
+            this.headers = headers;
+            return this;
+        }
 
         @NonNull
         public RequestData build() {

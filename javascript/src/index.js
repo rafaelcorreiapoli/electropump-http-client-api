@@ -1,4 +1,4 @@
-import _HttpCLientApi from './api/HttpCLientApi';
+import _HttpClientApi from './api/HttpClientApi';
 
 
-export const HttpCLientApi = _HttpCLientApi;
+export const HttpClientApi = _HttpClientApi;
