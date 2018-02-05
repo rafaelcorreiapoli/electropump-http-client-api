@@ -4,6 +4,7 @@
     "info": {
       "description": "HTTP Client",
       "title": "HttpClient",
+      "version": "1.0",
       "contact": {
         "name": "Rafael Ribeiro & Rudi Eros"
       }
